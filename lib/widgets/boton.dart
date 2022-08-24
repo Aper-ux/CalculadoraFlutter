@@ -13,7 +13,7 @@ class Boton extends StatelessWidget {
     this.big = false,
     required this.text,
     required this.onPressed,
-  })  : this.bgColor = bgColor ?? Color(0xff333333),
+  })  : bgColor = bgColor ?? const Color(0xff333333),
         super(key: key);
 
   @override
@@ -25,16 +25,16 @@ class Boton extends StatelessWidget {
     );
 
     return Container(
-      margin: EdgeInsets.only(bottom: 10, right: 5, left: 5),
+      margin: const EdgeInsets.only(bottom: 10, right: 5, left: 5),
       child: TextButton(
         style: buttonStyle,
         child: Container(
-          width: this.big ? 150 : 65,
+          width: big ? 150 : 65,
           height: 65,
           child: Center(
               child: Text(
-            this.text,
-            style: TextStyle(fontSize: 30, fontWeight: FontWeight.w300),
+            text,
+            style: const TextStyle(fontSize: 27, fontWeight: FontWeight.w300),
           )),
         ),
         onPressed: () => this.onPressed(),

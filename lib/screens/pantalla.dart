@@ -31,19 +31,19 @@ class Pantalla extends StatelessWidget {
                 children: [
                   Boton(
                     text: 'ac',
-                    bgColor: Color.fromARGB(255, 255, 143, 99),
+                    bgColor: const Color.fromARGB(255, 255, 143, 99),
                     // ignore: avoid_print
                     onPressed: () => print('AC'),
                   ),
                   Boton(
                     text: '+/-',
-                    bgColor: Color.fromARGB(255, 255, 143, 99),
+                    bgColor: const Color.fromARGB(255, 255, 143, 99),
                     // ignore: avoid_print
                     onPressed: () => print('+/-'),
                   ),
                   Boton(
                     text: 'del',
-                    bgColor: Color.fromARGB(255, 255, 143, 99),
+                    bgColor: const Color.fromARGB(255, 255, 143, 99),
                     // ignore: avoid_print
                     onPressed: () => print('del'),
                   ),
@@ -157,9 +157,9 @@ class Pantalla extends StatelessWidget {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: const Color.fromARGB(255, 255, 225, 216),
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
+          backgroundColor: const Color(0xff333333),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.white,
           items: const [
             BottomNavigationBarItem(
                 icon: Icon(

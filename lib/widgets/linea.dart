@@ -9,7 +9,7 @@ class Linea extends StatelessWidget {
     return Container(
         width: double.infinity,
         height: 2,
-        color: Colors.white.withOpacity(0.4),
+        color: Colors.black,
         margin: const EdgeInsets.symmetric(vertical: 10));
   }
 }
