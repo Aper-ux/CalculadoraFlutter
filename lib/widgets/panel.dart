@@ -12,11 +12,30 @@ class Panel extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<OperacionesBloc, OperacionesState>(
       builder: (context, state) {
+        if (state.primerentrada == '0' && state.segundaentrada == '0') {
+          return MainResultText(
+              text: state.resultado.endsWith('.0')
+                  ? state.resultado.substring(0, state.resultado.length - 2)
+                  : state.resultado);
+        }
+        // if (state.resultado.endsWith('..')) {
+        //   return MainResultText(
+        //       text: state.resultado.endsWith('..')
+        //           ? state.resultado.substring(0, state.resultado.length - 2)
+        //           : state.resultado
+        //           );
+        // }
+        // if (state.resultado.startsWith('.')) {
+        //   return MainResultText(text: '0${state.primerentrada}');
+        // }
         return Column(
           children: [
             SubResult(text: state.primerentrada),
             SubResult(text: state.op),
-            SubResult(text: state.segundaentrada),
+            SubResult(
+                text: state.segundaentrada.endsWith('.0')
+                    ? state.segundaentrada.substring(0, state.segundaentrada.length - 2)
+                    : state.segundaentrada),
             const Linea(),
             MainResultText(
                 text: state.resultado.endsWith('.0')

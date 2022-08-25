@@ -31,7 +31,7 @@ class Pantalla extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Boton(
-                    text: 'ac',
+                    text: 'c',
                     bgColor: const Color.fromARGB(255, 255, 143, 99),
                     onPressed: () => opr.add(Limpiar()),
                   ),
