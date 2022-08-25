@@ -1,14 +1,16 @@
+import 'package:calculadora/bloc/Operaciones/operaciones_bloc.dart';
+import 'package:calculadora/widgets/panel.dart';
 import 'package:flutter/material.dart';
 import 'package:calculadora/widgets/boton.dart';
-import 'package:calculadora/widgets/linea.dart';
-import 'package:calculadora/widgets/main_result.dart';
-import 'package:calculadora/widgets/sub_result.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class Pantalla extends StatelessWidget {
   const Pantalla({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final opr = BlocProvider.of<OperacionesBloc>(context);
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Calculadora FLutter'),
@@ -21,36 +23,32 @@ class Pantalla extends StatelessWidget {
               Expanded(
                 child: Container(),
               ),
-              const SubResult(text: '1'),
-              const SubResult(text: 'x'),
-              const SubResult(text: '1'),
-              const Linea(),
-              const MainResultText(text: '3.1416'),
+
+              //Panel de datos
+              const Panel(),
+
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Boton(
                     text: 'ac',
                     bgColor: const Color.fromARGB(255, 255, 143, 99),
-                    // ignore: avoid_print
-                    onPressed: () => print('AC'),
+                    onPressed: () => opr.add(Limpiar()),
                   ),
                   Boton(
                     text: '+/-',
                     bgColor: const Color.fromARGB(255, 255, 143, 99),
-                    // ignore: avoid_print
-                    onPressed: () => print('+/-'),
+                    onPressed: () => opr.add(PosNeg()),
                   ),
                   Boton(
                     text: 'del',
                     bgColor: const Color.fromARGB(255, 255, 143, 99),
-                    // ignore: avoid_print
-                    onPressed: () => print('del'),
+                    onPressed: () => opr.add(Del()),
                   ),
                   Boton(
                     text: '/',
                     bgColor: Colors.deepOrange,
-                    onPressed: () => print('/'),
+                    onPressed: () => opr.add(Operation('/')),
                   ),
                 ],
               ),
@@ -59,24 +57,20 @@ class Pantalla extends StatelessWidget {
                 children: [
                   Boton(
                     text: '7',
-                    // ignore: avoid_print
-                    onPressed: () => print('7'),
+                    onPressed: () => opr.add(Add('7')),
                   ),
                   Boton(
                     text: '8',
-                    // ignore: avoid_print
-                    onPressed: () => print('8'),
+                    onPressed: () => opr.add(Add('8')),
                   ),
                   Boton(
                     text: '9',
-                    // ignore: avoid_print
-                    onPressed: () => print('9'),
+                    onPressed: () => opr.add(Add('9')),
                   ),
                   Boton(
-                    text: 'X',
+                    text: 'x',
                     bgColor: Colors.deepOrange,
-                    // ignore: avoid_print
-                    onPressed: () => print('X'),
+                    onPressed: () => opr.add(Operation('x')),
                   ),
                 ],
               ),
@@ -85,24 +79,20 @@ class Pantalla extends StatelessWidget {
                 children: [
                   Boton(
                     text: '4',
-                    // ignore: avoid_print
-                    onPressed: () => print('4'),
+                    onPressed: () => opr.add(Add('4')),
                   ),
                   Boton(
                     text: '5',
-                    // ignore: avoid_print
-                    onPressed: () => print('5'),
+                    onPressed: () => opr.add(Add('5')),
                   ),
                   Boton(
                     text: '6',
-                    // ignore: avoid_print
-                    onPressed: () => print('6'),
+                    onPressed: () => opr.add(Add('6')),
                   ),
                   Boton(
                     text: '-',
                     bgColor: Colors.deepOrange,
-                    // ignore: avoid_print
-                    onPressed: () => print('-'),
+                    onPressed: () => opr.add(Operation('-')),
                   ),
                 ],
               ),
@@ -111,23 +101,20 @@ class Pantalla extends StatelessWidget {
                 children: [
                   Boton(
                     text: '1',
-                    // ignore: avoid_print
-                    onPressed: () => print('1'),
+                    onPressed: () => opr.add(Add('1')),
                   ),
                   Boton(
                     text: '2',
-                    // ignore: avoid_print
-                    onPressed: () => print('2'),
+                    onPressed: () => opr.add(Add('2')),
                   ),
                   Boton(
                     text: '3',
-                    onPressed: () => print('3'),
+                    onPressed: () => opr.add(Add('3')),
                   ),
                   Boton(
                     text: '+',
                     bgColor: Colors.deepOrange,
-                    // ignore: avoid_print
-                    onPressed: () => print('+'),
+                    onPressed: () => opr.add(Operation('+')),
                   ),
                 ],
               ),
@@ -137,18 +124,16 @@ class Pantalla extends StatelessWidget {
                   Boton(
                     text: '0',
                     big: true,
-                    // ignore: avoid_print
-                    onPressed: () => print('0'),
+                    onPressed: () => opr.add(Add('0')),
                   ),
                   Boton(
                     text: '.',
-                    // ignore: avoid_print
-                    onPressed: () => print('.'),
+                    onPressed: () => opr.add(Add('.')),
                   ),
                   Boton(
                     text: '=',
                     bgColor: Colors.deepOrange,
-                    onPressed: () => print('='),
+                    onPressed: () => opr.add(Operar()),
                   ),
                 ],
               ),
